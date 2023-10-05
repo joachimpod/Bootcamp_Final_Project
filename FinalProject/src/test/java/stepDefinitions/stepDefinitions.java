@@ -7,6 +7,8 @@ import utilities.Data.Drivers.DriverChromeImplemented;
 import utilities.Data.Drivers.interfaces.DriverChrome;
 import utilities.DemoBlaze.DemoBlazeActions.DemoBlazeActions;
 
+import java.util.List;
+
 public class stepDefinitions {
 
 	private DriverChrome driverChrome;
@@ -48,5 +50,20 @@ public class stepDefinitions {
 	@After
 	public void afterScenario() {
 		driverChrome.getDriver().quit();
+	}
+
+	@When("I search for multiple {string} and add it to the cart")
+	public void iSearchForMultipleAndAddItToTheCart(String products) {
+		List<String> productsList = List.of(products.split(","));
+		for(String product : productsList){
+			System.out.println(product);
+			webElementInteractions.clickProductAndAddToCart(product);
+		}
+	}
+
+	@Then("I should see the {string} in the shop cart")
+	public void iShouldSeeTheInTheShopCart(String products) {
+		List<String> productsList = List.of(products.split(","));
+		webElementInteractions.iShouldSeeTheInTheShopCart(productsList);
 	}
 }

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utilities.Data.Locators.LocatorsGoogle;
 import utilities.webElements.interfaces.GuruWebElements;
-import utilities.webElements.google.GuruWebElementsImplemented;
+import utilities.webElements.GuruWebElementsImplemented;
 
 import java.util.ArrayList;
 import java.util.List;

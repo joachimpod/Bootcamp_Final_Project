@@ -3,6 +3,8 @@ package utilities.DemoBlaze.DemoBlazeActions;
 import org.openqa.selenium.WebDriver;
 import utilities.DemoBlaze.DemoBlazePages.DemoBlazePage;
 
+import java.util.List;
+
 public class DemoBlazeActions {
 
         private DemoBlazePage demoBlazePage;
@@ -32,5 +34,9 @@ public class DemoBlazeActions {
 
         public String getConfirmationMessage() {
             return demoBlazePage.getConfirmationMessage();
+        }
+
+        public void iShouldSeeTheInTheShopCart(List<String> productsList){
+            demoBlazePage.iShouldSeeTheInTheShopCart(productsList);
         }
 }

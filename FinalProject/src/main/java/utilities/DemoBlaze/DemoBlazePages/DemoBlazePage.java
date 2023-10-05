@@ -1,10 +1,14 @@
 package utilities.DemoBlaze.DemoBlazePages;
 
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Alert;
 import utilities.Data.Locators.LocatorDemoBlaze;
-import utilities.webElements.google.GuruWebElementsImplemented;
+import utilities.webElements.GuruWebElementsImplemented;
 import utilities.webElements.interfaces.GuruWebElements;
+
+import java.util.List;
 
 public class DemoBlazePage {
     private final WebDriver driver;
@@ -45,5 +49,11 @@ public class DemoBlazePage {
 
     public String getConfirmationMessage() {
         return guruWebElements.findElement(LocatorDemoBlaze.MESSAGE_SUCCESS.getBy()).getText();
+    }
+
+    public void iShouldSeeTheInTheShopCart(List<String> productsList) {
+        for(String product : productsList) {
+            Assert.assertNotNull(guruWebElements.findElement(By.xpath("//td[contains(text(),'" + product + "')]")));
+        }
     }
 }
