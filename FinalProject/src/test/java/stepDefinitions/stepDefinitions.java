@@ -5,18 +5,18 @@ import io.cucumber.java.en.*;
 import org.testng.Assert;
 import utilities.Data.Drivers.DriverChromeImplemented;
 import utilities.Data.Drivers.interfaces.DriverChrome;
-import utilities.DemonBlazeActions.WebElementInteractions;
+import utilities.DemoBlaze.DemoBlazeActions.DemoBlazeActions;
 
 public class stepDefinitions {
 
 	private DriverChrome driverChrome;
-	private WebElementInteractions webElementInteractions;
+	private DemoBlazeActions webElementInteractions;
 
 	@Given("I am on the shopping website")
 	public void iAmOnTheShoppingWebsite() {
 		String webURL = "https://www.demoblaze.com/";
 		driverChrome = new DriverChromeImplemented(webURL);
-		webElementInteractions = new WebElementInteractions(driverChrome.getDriver());
+		webElementInteractions = new DemoBlazeActions(driverChrome.getDriver());
 	}
 
 	@When("I search for {string} and add it to the cart")

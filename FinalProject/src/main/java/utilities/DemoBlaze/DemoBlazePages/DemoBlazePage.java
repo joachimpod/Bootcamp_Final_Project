@@ -1,4 +1,4 @@
-package utilities.DemonBlazeActions;
+package utilities.DemoBlaze.DemoBlazePages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Alert;
@@ -6,11 +6,11 @@ import utilities.Data.Locators.LocatorDemoBlaze;
 import utilities.webElements.google.GuruWebElementsImplemented;
 import utilities.webElements.interfaces.GuruWebElements;
 
-public class WebElementInteractions {
+public class DemoBlazePage {
     private final WebDriver driver;
     private final GuruWebElements guruWebElements;
 
-    public WebElementInteractions(WebDriver driver) {
+    public DemoBlazePage(WebDriver driver) {
         this.driver = driver;
         guruWebElements = new GuruWebElementsImplemented(driver);
     }

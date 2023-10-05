@@ -1,5 +1,6 @@
-package utilities.GoogleActions;
+package utilities.Google.GooglePages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,7 @@ import utilities.Data.Locators.LocatorsGoogle;
 import utilities.webElements.interfaces.GuruWebElements;
 import utilities.webElements.google.GuruWebElementsImplemented;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GoogleSearchPage {
@@ -14,6 +16,8 @@ public class GoogleSearchPage {
     private final GuruWebElements guruWebElements;
     private final By textField;
     private final By webElementList;
+    private List<String> webElementListFirstResult;
+    private List<String> webElementListSecondResult;
 
     public GoogleSearchPage(WebDriver driver) {
         guruWebElements = new GuruWebElementsImplemented(driver);
@@ -46,6 +50,30 @@ public class GoogleSearchPage {
                 break;
             }
         }
+    }
+
+    public void setWebElementListFirstResult(List<WebElement> webElementList){
+        this.webElementListFirstResult = convertListWebElementToListString(webElementList);
+    }
+
+    public void setWebElementListSecondResult(List<WebElement> webElementList){
+        this.webElementListSecondResult = convertListWebElementToListString(webElementList);
+    }
+
+    public void verifyNoCoincidencesBetweenLists() {
+        for (String elementFromFirstList : webElementListFirstResult) {
+            for (String elementFromSecondList : webElementListSecondResult) {
+                Assert.assertNotEquals("Element found in both lists: " + elementFromFirstList, elementFromFirstList, elementFromSecondList);
+            }
+        }
+    }
+
+    private List<String> convertListWebElementToListString(List<WebElement> webElementList){
+        List<String> textList = new ArrayList<>();
+        for (WebElement element : webElementList) {
+            textList.add(element.getText());
+        }
+        return textList;
     }
 
 }
