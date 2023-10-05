@@ -15,13 +15,14 @@ public abstract class  GuruWebElementsAbstract implements GuruWebElements {
     protected WebDriver driver;
 
 	public void type(String text, By locator) {
-
+		waits(locator);
 		for (char c : text.toCharArray()) {
 			findElement(locator).sendKeys(String.valueOf(c));
 		}
 	}
 
 	public void click(By locator) {
+		waits(locator);
 		findElement(locator).click();
 	}
 

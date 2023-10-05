@@ -3,16 +3,20 @@ package testRunners;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import utilities.Data.Drivers.DriverChrome;
 import utilities.GoogleActions.GoogleSearchBarActions;
 
 public class GoogleSearchBarTest {
 
+    private DriverChrome driverChrome;
     private GoogleSearchBarActions searchBarActions;
 
     @BeforeTest
     public void setUp() {
+        String webURL = "https://www.google.com/";
+        driverChrome = new DriverChrome(webURL);
         searchBarActions = new GoogleSearchBarActions();
-        searchBarActions.initDrivers();
+        searchBarActions.initDrivers(driverChrome.getDriver());
     }
 
     @Test
@@ -27,6 +31,6 @@ public class GoogleSearchBarTest {
 
     @AfterTest
     public void tearDown() {
-        searchBarActions.closeDriver();
+        driverChrome.getDriver().quit();
     }
 }

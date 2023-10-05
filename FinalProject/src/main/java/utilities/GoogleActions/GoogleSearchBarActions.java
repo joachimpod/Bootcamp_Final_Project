@@ -1,23 +1,20 @@
 package utilities.GoogleActions;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import utilities.Data.Drivers.DriverChrome;
 
 import java.util.List;
 
 public class GoogleSearchBarActions {
 
-    private DriverChrome driverChrome;
     private GoogleSearchPage googleSearchPage;
     private GoogleSearchResult googleSearchResult;
     private List<WebElement> webElementListFirstResult;
     private List<WebElement> webElementListSecondResult;
 
-    public void initDrivers() {
-        String webURL = "https://www.google.com/";
-        driverChrome = new DriverChrome(webURL);
-        googleSearchPage = new GoogleSearchPage(driverChrome.getDriver());
-        googleSearchResult = new GoogleSearchResult(driverChrome.getDriver());
+    public void initDrivers(WebDriver driver) {
+        googleSearchPage = new GoogleSearchPage(driver);
+        googleSearchResult = new GoogleSearchResult(driver);
     }
 
     public List<WebElement> selectResults(String search) {
@@ -38,9 +35,6 @@ public class GoogleSearchBarActions {
         googleSearchResult.verifyText(text);
     }
 
-    public void closeDriver() {
-        driverChrome.getDriver().quit();
-    }
 
     public void printFirstAndSecondList(){
         System.out.println("First list:");
