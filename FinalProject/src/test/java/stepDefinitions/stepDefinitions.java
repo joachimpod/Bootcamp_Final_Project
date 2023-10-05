@@ -56,7 +56,6 @@ public class stepDefinitions {
 	public void iSearchForMultipleAndAddItToTheCart(String products) {
 		List<String> productsList = List.of(products.split(","));
 		for(String product : productsList){
-			System.out.println(product);
 			webElementInteractions.clickProductAndAddToCart(product);
 		}
 	}

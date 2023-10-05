@@ -4,17 +4,17 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utilities.Data.Locators.LocatorsGoogle;
-import utilities.webElements.interfaces.GuruWebElements;
-import utilities.webElements.GuruWebElementsImplemented;
+import utilities.webElements.WebElementsFunctionalityImplemented;
+import utilities.webElements.interfaces.WebElementsFunctionality;
 
 import java.util.List;
 
 public class GoogleSearchResultPage {
-    private final GuruWebElements guruWebElements;
+    private final WebElementsFunctionality webElementsFunctionality;
 
 
     public GoogleSearchResultPage(WebDriver driver) {
-        guruWebElements = new GuruWebElementsImplemented(driver);
+        webElementsFunctionality = new WebElementsFunctionalityImplemented(driver);
     }
 
     public void verifyText(String text) {
@@ -23,8 +23,8 @@ public class GoogleSearchResultPage {
     }
 
     private WebElement getCiteFromFirstResult(){
-        WebElement divElement = guruWebElements.findElement(LocatorsGoogle.SEARCH_RESULTS.getBy());
-        List<WebElement> elements = divElement.findElements(LocatorsGoogle.FIRST_ELEMENT_SEARCH_RESULT.getBy());
-        return elements.get(0).findElement(LocatorsGoogle.CITE_IN_FIRST_ELEMENT_SEARCH_RESULT.getBy());
+        WebElement divElement = webElementsFunctionality.findElement(LocatorsGoogle.SEARCH_RESULTS.getBy());
+        List<WebElement> webElementList = divElement.findElements(LocatorsGoogle.LIST_OF_ELEMENTS_SEARCH_RESULT.getBy());
+        return webElementList.get(0).findElement(LocatorsGoogle.CITE_IN_FIRST_ELEMENT_SEARCH_RESULT.getBy());
     }
 }

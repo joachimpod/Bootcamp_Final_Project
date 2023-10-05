@@ -21,10 +21,13 @@ public class GoogleSearchBarActions {
         googleSearchResult = new GoogleSearchResultPage(driver);
     }
 
+
     public List<WebElement> selectResults(String search) {
-        List<WebElement> webElementList = googleSearchPage.searchAndSelectResults(search);
-        googleSearchPage.printList(webElementList);
-        return webElementList;
+        return googleSearchPage.searchAndSelectResults(search);
+    }
+
+    public void printResults(List<WebElement> results) {
+        googleSearchPage.printList(results);
     }
 
     public void clearSearchField() {

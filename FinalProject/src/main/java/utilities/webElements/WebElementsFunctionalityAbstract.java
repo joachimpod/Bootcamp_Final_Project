@@ -6,11 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
-import utilities.webElements.interfaces.GuruWebElements;
+import utilities.webElements.interfaces.WebElementsFunctionality;
 
 import java.util.List;
 
-public abstract class  GuruWebElementsAbstract implements GuruWebElements {
+public abstract class  WebElementsFunctionalityAbstract implements WebElementsFunctionality {
     protected Wait<WebDriver> wait;
     protected WebDriver driver;
 

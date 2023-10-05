@@ -9,12 +9,12 @@ public enum LocatorDemoBlaze {
     CREDIT_CARD(By.id("card")),
     MONTH(By.id("month")),
     YEAR(By.id("year")),
-    SHOPCART(By.id("cartur")),
+    SHOP_CART(By.id("cartur")),
     NAVBAR(By.id("nava")),
     ADD_TO_CART_XPATH(By.xpath("//a[contains(text(),'Add to cart')]")),
     PLACE_ORDER_BUTTON_XPATH(By.xpath("//button[contains(text(),'Place Order')]")),
     PURCHASE_BUTTON_XPATH(By.xpath("//button[contains(text(),'Purchase')]")),
-    MESSAGE_SUCCESS(By.xpath("//h2[contains(text(),'Thank you for your purchase!')]"));
+    MESSAGE_SUCCESS_XPATH(By.xpath("//h2[contains(text(),'Thank you for your purchase!')]"));
     private final By by;
 
     LocatorDemoBlaze(By by) {

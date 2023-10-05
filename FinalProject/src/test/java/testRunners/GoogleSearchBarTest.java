@@ -1,11 +1,14 @@
 package testRunners;
 
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utilities.Data.Drivers.DriverChromeImplemented;
 import utilities.Data.Drivers.interfaces.DriverChrome;
 import utilities.Google.GoogleActions.GoogleSearchBarActions;
+
+import java.util.List;
 
 public class GoogleSearchBarTest {
 
@@ -21,12 +24,21 @@ public class GoogleSearchBarTest {
 
     @Test
     public void performGoogleSearch() {
-        searchBarActions.setWebElementListFirstResult(searchBarActions.selectResults("auto"));
+        String firstSearch = "auto";
+        String secondSearch = "automation";
+        String verifyText = "store.steampowered.com";
+
+        List<WebElement> webElementListFirstSearch = searchBarActions.selectResults(firstSearch);
+        searchBarActions.setWebElementListFirstResult(webElementListFirstSearch);
+        searchBarActions.printResults(webElementListFirstSearch);
         searchBarActions.clearSearchField();
-        searchBarActions.setWebElementListSecondResult(searchBarActions.selectResults("automation"));
+
+        List<WebElement> webElementListSecondSearch = searchBarActions.selectResults(secondSearch);
+        searchBarActions.setWebElementListSecondResult(webElementListSecondSearch);
+        searchBarActions.printResults(webElementListSecondSearch);
         searchBarActions.verifyNoCoincidencesBetweenLists();
         searchBarActions.clickFirstImage();
-        searchBarActions.verifyText("store.steampowered.com");
+        searchBarActions.verifyText(verifyText);
     }
 
     @AfterTest

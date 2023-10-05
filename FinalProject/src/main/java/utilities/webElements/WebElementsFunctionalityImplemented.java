@@ -5,9 +5,9 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class GuruWebElementsImplemented extends GuruWebElementsAbstract {
+public class WebElementsFunctionalityImplemented extends WebElementsFunctionalityAbstract {
 
-	public GuruWebElementsImplemented(WebDriver driver) {
+	public WebElementsFunctionalityImplemented(WebDriver driver) {
 		this.driver = driver;
 		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	}
