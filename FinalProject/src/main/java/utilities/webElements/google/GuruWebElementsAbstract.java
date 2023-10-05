@@ -37,4 +37,8 @@ public abstract class  GuruWebElementsAbstract implements GuruWebElements {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
+	public void waitAlert() {
+		wait.until(ExpectedConditions.alertIsPresent());
+	}
+
 }

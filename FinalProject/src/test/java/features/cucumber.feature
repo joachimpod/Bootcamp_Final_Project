@@ -23,16 +23,64 @@ Feature: Purchase Products
   So that I can proceed with the purchase by placing the order
 
   @tag1
-  Scenario Outline: Add Products to Cart and Place Order
+  Scenario Outline:Test1 Add Products to Cart and Place Order
     Given I am on the shopping website
     And I search for "<firstProduct>" and add it to the cart
     And I search for "<secondProduct>" and add it to the cart
     And I proceed to the cart
-    And I review the cart items
-    When I place the order with "<name>" and "<country>" and "<city>"  and "<creditCard>"  and "<mounth>" and "<year>"
+    When I place the order with "<name>" and "<country>" and "<city>"  and "<creditCard>"  and "<month>" and "<year>"
     Then I should see a confirmation "<message>"
 
     Examples:
-      | firstProduct | secondProduct | message                |
-      | student      | Password123   | Logged In Successfully |
+      | firstProduct           | secondProduct       | name          | country         | city   | creditCard        | month   | year  |       message                |
+      | Samsung galaxy s6      | Nexus 6             | Jhon          | United States   | Miami  | 1234 5678 9012 34 |   12    | 2023  | Thank you for your purchase! |
 
+  @tag2
+  Scenario Outline:Test2 Add Products to Cart and Place Order
+    Given I am on the shopping website
+    And I search for "<firstProduct>" and add it to the cart
+    And I search for "<secondProduct>" and add it to the cart
+    And I search for "<thirdProduct>" and add it to the cart
+    And I search for "<fourthProduct>" and add it to the cart
+    And I search for "<fifthProduct>" and add it to the cart
+    And I proceed to the cart
+    When I place the order with "<name>" and "<country>" and "<city>"  and "<creditCard>"  and "<month>" and "<year>"
+    Then I should see a confirmation "<message>"
+
+    Examples:
+      | firstProduct           | secondProduct       | thirdProduct                    | fourthProduct       | fifthProduct           | name          | country         | city   | creditCard        | month   | year  |       message                |
+      | Samsung galaxy s6      | Nokia lumia 1520             | Samsung galaxy s6      | Sony vaio i5             | HTC One M9      | Jhon          | United States   | Miami  | 1234 5678 9012 34 |   12    | 2023  | Thank you for your purchase! |
+
+  @tag3
+  Scenario Outline:Test3 Add Products to Cart and Place Order
+    Given I am on the shopping website
+    And I search for "<firstProduct>" and add it to the cart
+    And I search for "<firstProduct>" and add it to the cart
+    And I search for "<firstProduct>" and add it to the cart
+    And I search for "<firstProduct>" and add it to the cart
+    And I search for "<firstProduct>" and add it to the cart
+    And I proceed to the cart
+    When I place the order with "<name>" and "<country>" and "<city>"  and "<creditCard>"  and "<month>" and "<year>"
+    Then I should see a confirmation "<message>"
+
+    Examples:
+      | firstProduct           | name          | country         | city   | creditCard        | month   | year  |       message                |
+      | Samsung galaxy s6      | Jhon          | United States   | Miami  | 1234 5678 9012 34 |   12    | 2023  | Thank you for your purchase! |
+
+  @tag4
+  Scenario Outline:Test4 Add Products to Cart and Place Order
+    Given I am on the shopping website
+    And I search for "<firstProduct>" and add it to the cart
+    And I click in categories "<firstCategories>"
+    And I search for "<secondProduct>" and add it to the cart
+    And I click in categories "<secondCategories>"
+    And I search for "<thirdProduct>" and add it to the cart
+    And I click in categories "<thirdCategories>"
+    And I search for "<fourthProduct>" and add it to the cart
+    And I proceed to the cart
+    When I place the order with "<name>" and "<country>" and "<city>"  and "<creditCard>"  and "<month>" and "<year>"
+    Then I should see a confirmation "<message>"
+
+    Examples:
+      | firstProduct           | secondProduct       | thirdProduct           | fourthProduct       |  firstCategories  |  secondCategories |  thirdCategories        | name          | country         | city   | creditCard        | month   | year  |       message                |
+      | Samsung galaxy s6       | Nokia lumia 1520    | Sony vaio i7           | ASUS Full HD        |   Phones          |   Laptops         |   Monitors              | Jhon          | United States   | Miami  | 1234 5678 9012 34 |   12    | 2023  | Thank you for your purchase! |

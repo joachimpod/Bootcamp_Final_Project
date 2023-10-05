@@ -21,6 +21,7 @@ public abstract class GuruWebElementsAbstractDemoBlaze implements GuruWebElement
     }
 
     public void click(By locator) {
+        waits(locator);
         findElement(locator).click();
     }
 
@@ -34,5 +35,8 @@ public abstract class GuruWebElementsAbstractDemoBlaze implements GuruWebElement
 
     public void waits(By locator) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+    public void waitAlert() {
+        wait.until(ExpectedConditions.alertIsPresent());
     }
 }
