@@ -3,7 +3,8 @@ package stepDefinitions;
 import io.cucumber.java.After;
 import io.cucumber.java.en.*;
 import org.testng.Assert;
-import utilities.Data.Drivers.DriverChrome;
+import utilities.Data.Drivers.DriverChromeImplemented;
+import utilities.Data.Drivers.interfaces.DriverChrome;
 import utilities.DemonBlazeActions.WebElementInteractions;
 
 public class stepDefinitions {
@@ -14,7 +15,7 @@ public class stepDefinitions {
 	@Given("I am on the shopping website")
 	public void iAmOnTheShoppingWebsite() {
 		String webURL = "https://www.demoblaze.com/";
-		driverChrome = new DriverChrome(webURL);
+		driverChrome = new DriverChromeImplemented(webURL);
 		webElementInteractions = new WebElementInteractions(driverChrome.getDriver());
 	}
 

@@ -84,3 +84,17 @@ Feature: Purchase Products
     Examples:
       | firstProduct           | secondProduct       | thirdProduct           | fourthProduct       |  firstCategories  |  secondCategories |  thirdCategories        | name          | country         | city   | creditCard        | month   | year  |       message                |
       | Samsung galaxy s6       | Nokia lumia 1520    | Sony vaio i7           | ASUS Full HD        |   Phones          |   Laptops         |   Monitors              | Jhon          | United States   | Miami  | 1234 5678 9012 34 |   12    | 2023  | Thank you for your purchase! |
+
+
+  #@tag5
+  #Scenario Outline:Test5 Add Products to Cart and Place Order
+   # Given I am on the shopping website
+    #When I search for "<product>" and add it to the cart
+     # Then I should see a confirmation "<message>"
+
+    #Examples:
+     # | product               |       message  |
+      #| Samsung galaxy s6      | success |
+      #| Samsung galaxy s6      | success |
+      #| Samsung galaxy s6      | success |
+      #| Samsung galaxy s6      | success |

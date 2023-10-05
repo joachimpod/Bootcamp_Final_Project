@@ -1,5 +1,6 @@
 package utilities.GoogleActions;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -49,5 +50,13 @@ public class GoogleSearchBarActions {
     }
     public void setWebElementListSecondResult(List<WebElement> webElementList){
         this.webElementListSecondResult = webElementList;
+    }
+
+    public void verifyNoCoincidencesBetweenLists(){
+        for (WebElement elementFromFirstList : webElementListFirstResult) {
+            for (WebElement elementFromSecondList : webElementListSecondResult) {
+                Assert.assertEquals("This element is in both lists: "+elementFromFirstList.getText()+".",elementFromFirstList.getText(),elementFromSecondList.getText());
+            }
+        }
     }
 }

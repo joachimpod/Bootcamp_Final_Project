@@ -3,7 +3,8 @@ package testRunners;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import utilities.Data.Drivers.DriverChrome;
+import utilities.Data.Drivers.DriverChromeImplemented;
+import utilities.Data.Drivers.interfaces.DriverChrome;
 import utilities.GoogleActions.GoogleSearchBarActions;
 
 public class GoogleSearchBarTest {
@@ -14,7 +15,7 @@ public class GoogleSearchBarTest {
     @BeforeTest
     public void setUp() {
         String webURL = "https://www.google.com/";
-        driverChrome = new DriverChrome(webURL);
+        driverChrome = new DriverChromeImplemented(webURL);
         searchBarActions = new GoogleSearchBarActions();
         searchBarActions.initDrivers(driverChrome.getDriver());
     }
@@ -25,6 +26,7 @@ public class GoogleSearchBarTest {
         searchBarActions.clearSearchField();
         searchBarActions.setWebElementListSecondResult(searchBarActions.selectResults("automation"));
         searchBarActions.printFirstAndSecondList();
+        //searchBarActions.verifyNoCoincidencesBetweenLists();
         searchBarActions.clickFirstImage();
         searchBarActions.verifyText("store.steampowered.com");
     }
