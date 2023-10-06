@@ -39,4 +39,8 @@ public class DemoBlazeActions {
         public void iShouldSeeTheInTheShopCart(List<String> productsList){
             demoBlazePage.iShouldSeeTheInTheShopCart(productsList);
         }
+
+        public void iCheckIfTheDataItsCorrectWithAnd(String name, String creditCard){
+            demoBlazePage.iCheckIfTheDataItsCorrectWithAnd(name, creditCard);
+        }
 }

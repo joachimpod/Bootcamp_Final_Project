@@ -14,7 +14,8 @@ public enum LocatorDemoBlaze {
     ADD_TO_CART_XPATH(By.xpath("//a[contains(text(),'Add to cart')]")),
     PLACE_ORDER_BUTTON_XPATH(By.xpath("//button[contains(text(),'Place Order')]")),
     PURCHASE_BUTTON_XPATH(By.xpath("//button[contains(text(),'Purchase')]")),
-    MESSAGE_SUCCESS_XPATH(By.xpath("//h2[contains(text(),'Thank you for your purchase!')]"));
+    MESSAGE_SUCCESS_XPATH(By.xpath("//h2[contains(text(),'Thank you for your purchase!')]")),
+    PLACE_ORDER_DATA_XPATH(By.xpath("//body/div[10]/p[1]"));
     private final By by;
 
     LocatorDemoBlaze(By by) {
@@ -25,8 +26,13 @@ public enum LocatorDemoBlaze {
         return by;
     }
 
-    public static By getByContains(String productName) {
+    public static By getByContainsA(String productName) {
 
         return By.xpath( "//a[contains(text(),'"+productName+"')]");
+    }
+
+    public static By getByContainsTD(String productName) {
+
+        return By.xpath( "//td[contains(text(),'"+productName+"')]");
     }
 }

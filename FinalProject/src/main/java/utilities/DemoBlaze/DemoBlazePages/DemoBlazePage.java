@@ -1,9 +1,9 @@
 package utilities.DemoBlaze.DemoBlazePages;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebElement;
 import utilities.Data.Locators.LocatorDemoBlaze;
 import utilities.webElements.WebElementsFunctionalityImplemented;
 import utilities.webElements.interfaces.WebElementsFunctionality;
@@ -27,7 +27,7 @@ public class DemoBlazePage {
     }
 
     private void clickProduct(String product) {
-        webElementsFunctionality.click(LocatorDemoBlaze.getByContains(product));
+        webElementsFunctionality.click(LocatorDemoBlaze.getByContainsA(product));
     }
 
     private void addToCart() {
@@ -45,7 +45,7 @@ public class DemoBlazePage {
     }
 
     public void clickCategory(String category) {
-        webElementsFunctionality.click(LocatorDemoBlaze.getByContains(category));
+        webElementsFunctionality.click(LocatorDemoBlaze.getByContainsA(category));
     }
 
     public void proceedToCart() {
@@ -82,7 +82,14 @@ public class DemoBlazePage {
 
     public void iShouldSeeTheInTheShopCart(List<String> productsList) {
         for(String product : productsList) {
-            Assert.assertNotNull(webElementsFunctionality.findElement(By.xpath("//td[contains(text(),'" + product + "')]")));
+            Assert.assertNotNull(webElementsFunctionality.findElement(LocatorDemoBlaze.getByContainsTD(product)));
         }
+        goToNavbar();
+    }
+
+    public void iCheckIfTheDataItsCorrectWithAnd(String name, String creditCard){
+        WebElement element = webElementsFunctionality.findElement(LocatorDemoBlaze.PLACE_ORDER_DATA_XPATH.getBy());
+        String elementText = element.getText();
+        Assert.assertTrue("Actual text does not contain the expected text", elementText.contains(name) && elementText.contains(creditCard));
     }
 }

@@ -43,6 +43,6 @@ public class GoogleSearchBarTest {
 
     @AfterTest
     public void tearDown() {
-        driverChrome.getDriver().quit();
+        driverChrome.getDriver().close();
     }
 }

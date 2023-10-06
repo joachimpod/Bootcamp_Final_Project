@@ -26,10 +26,15 @@ Feature: Purchase Products
   Scenario Outline:Test1 Add Products to Cart and Place Order
     Given I am on the shopping website
     And I search for "<firstProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<firstProduct>" in the shop cart
     And I search for "<secondProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<secondProduct>" in the shop cart
     And I proceed to the cart
     When I place the order with "<name>" and "<country>" and "<city>"  and "<creditCard>"  and "<month>" and "<year>"
     Then I should see a confirmation "<message>"
+    And I check if the data its correct with "<name>" and "<creditCard>"
 
     Examples:
       | firstProduct           | secondProduct       | name          | country         | city   | creditCard        | month   | year  |       message                |
@@ -39,13 +44,24 @@ Feature: Purchase Products
   Scenario Outline:Test2 Add Products to Cart and Place Order
     Given I am on the shopping website
     And I search for "<firstProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<firstProduct>" in the shop cart
     And I search for "<secondProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<secondProduct>" in the shop cart
     And I search for "<thirdProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<thirdProduct>" in the shop cart
     And I search for "<fourthProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<fourthProduct>" in the shop cart
     And I search for "<fifthProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<fifthProduct>" in the shop cart
     And I proceed to the cart
     When I place the order with "<name>" and "<country>" and "<city>"  and "<creditCard>"  and "<month>" and "<year>"
     Then I should see a confirmation "<message>"
+    And I check if the data its correct with "<name>" and "<creditCard>"
 
     Examples:
       | firstProduct           | secondProduct       | thirdProduct                    | fourthProduct       | fifthProduct           | name          | country         | city   | creditCard        | month   | year  |       message                |
@@ -55,13 +71,24 @@ Feature: Purchase Products
   Scenario Outline:Test3 Add Products to Cart and Place Order
     Given I am on the shopping website
     And I search for "<firstProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<firstProduct>" in the shop cart
     And I search for "<firstProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<firstProduct>" in the shop cart
     And I search for "<firstProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<firstProduct>" in the shop cart
     And I search for "<firstProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<firstProduct>" in the shop cart
     And I search for "<firstProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<firstProduct>" in the shop cart
     And I proceed to the cart
     When I place the order with "<name>" and "<country>" and "<city>"  and "<creditCard>"  and "<month>" and "<year>"
     Then I should see a confirmation "<message>"
+    And I check if the data its correct with "<name>" and "<creditCard>"
 
     Examples:
       | firstProduct           | name          | country         | city   | creditCard        | month   | year  |       message                |
@@ -71,15 +98,24 @@ Feature: Purchase Products
   Scenario Outline:Test4 Add Products to Cart and Place Order
     Given I am on the shopping website
     And I search for "<firstProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<firstProduct>" in the shop cart
     And I click in categories "<firstCategories>"
     And I search for "<secondProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<secondProduct>" in the shop cart
     And I click in categories "<secondCategories>"
     And I search for "<thirdProduct>" and add it to the cart
+    And I proceed to the cart
+    And I should see the "<thirdProduct>" in the shop cart
     And I click in categories "<thirdCategories>"
     And I search for "<fourthProduct>" and add it to the cart
     And I proceed to the cart
+    And I should see the "<fourthProduct>" in the shop cart
+    And I proceed to the cart
     When I place the order with "<name>" and "<country>" and "<city>"  and "<creditCard>"  and "<month>" and "<year>"
     Then I should see a confirmation "<message>"
+    And I check if the data its correct with "<name>" and "<creditCard>"
 
     Examples:
       | firstProduct           | secondProduct       | thirdProduct           | fourthProduct       |  firstCategories  |  secondCategories |  thirdCategories        | name          | country         | city   | creditCard        | month   | year  |       message                |
@@ -92,8 +128,10 @@ Feature: Purchase Products
     When I search for multiple "<product>" and add it to the cart
     And I proceed to the cart
     And I should see the "<product>" in the shop cart
+    And I proceed to the cart
     Then I place the order with "<name>" and "<country>" and "<city>"  and "<creditCard>"  and "<month>" and "<year>"
     And I should see a confirmation "<message>"
+    And I check if the data its correct with "<name>" and "<creditCard>"
 
     Examples:
       | product                                        | name          | country         | city   | creditCard        | month   | year  |       message                |

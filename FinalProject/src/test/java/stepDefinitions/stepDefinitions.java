@@ -49,7 +49,7 @@ public class stepDefinitions {
 
 	@After
 	public void afterScenario() {
-		driverChrome.getDriver().quit();
+		driverChrome.getDriver().close();
 	}
 
 	@When("I search for multiple {string} and add it to the cart")
@@ -65,4 +65,11 @@ public class stepDefinitions {
 		List<String> productsList = List.of(products.split(","));
 		webElementInteractions.iShouldSeeTheInTheShopCart(productsList);
 	}
+
+
+	@And("I check if the data its correct with {string} and {string}")
+	public void iCheckIfTheDataItsCorrectWithAnd(String name,String creditCard) {
+		webElementInteractions.iCheckIfTheDataItsCorrectWithAnd(name, creditCard);
+	}
+
 }
