@@ -8,8 +8,7 @@ import utilities.Data.Locators.LocatorsGoogle;
 import utilities.webElements.WebElementsFunctionalityImplemented;
 import utilities.webElements.interfaces.WebElementsFunctionality;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class GoogleSearchPage {
 
@@ -25,10 +24,21 @@ public class GoogleSearchPage {
         webElementList = LocatorsGoogle.WEB_ELEMENT_LIST.getBy();
     }
 
-    public List<WebElement> searchAndSelectResults(String search) {
+    public void searchAndSelectResults(String search) {
         WebElementsFunctionality.type(search, textField);
         WebElementsFunctionality.waits(webElementList);
-        return WebElementsFunctionality.findElements(webElementList);
+        List<WebElement> webElementListAux = WebElementsFunctionality.findElements(webElementList);
+        fillTheWebElementsLists(webElementListAux);
+        printList(webElementListAux);
+    }
+
+    private void fillTheWebElementsLists(List<WebElement> webElementList){
+        if(webElementListFirstResult == null){
+            setWebElementListFirstResult(webElementList);
+        }
+        else {
+            setWebElementListSecondResult(webElementList);
+        }
     }
 
     public void clearSearchField() {
@@ -42,14 +52,15 @@ public class GoogleSearchPage {
         System.out.println();
     }
 
-    public void clickFirstImage() {
+    public GoogleSearchResultPage clickFirstImage() {
         List<WebElement> webElementListAlternative = WebElementsFunctionality.findElements(webElementList);
         for (WebElement element : webElementListAlternative) {
-            if (element.findElements(By.cssSelector("[data-src]")).size() > 0) {
+            if (!element.findElements(By.cssSelector("[data-src]")).isEmpty()) {
                 element.click();
-                break;
+                return new GoogleSearchResultPage(WebElementsFunctionality.getDriver());
             }
         }
+        return new GoogleSearchResultPage(WebElementsFunctionality.getDriver());
     }
 
     public void setWebElementListFirstResult(List<WebElement> webElementList){
@@ -68,13 +79,11 @@ public class GoogleSearchPage {
         return textList;
     }
 
-
     public void verifyNoCoincidencesBetweenLists() {
-        for (String elementFromFirstList : webElementListFirstResult) {
-            for (String elementFromSecondList : webElementListSecondResult) {
-                Assert.assertNotEquals("Element found in both lists: " + elementFromFirstList, elementFromFirstList, elementFromSecondList);
-            }
-        }
+        boolean anyMatch = webElementListFirstResult.stream().noneMatch(
+                firstElement -> webElementListSecondResult.contains(firstElement)
+        );
+        Assert.assertTrue("Element found in both lists.",anyMatch);
     }
 
 }

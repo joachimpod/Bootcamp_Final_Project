@@ -1,25 +1,22 @@
 package testRunners;
 
-import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utilities.Data.Drivers.DriverChromeImplemented;
-import utilities.Data.Drivers.interfaces.DriverChrome;
-import utilities.Google.GoogleActions.GoogleSearchBarActions;
-
-import java.util.List;
+import utilities.Data.Drivers.interfaces.Drivers;
+import utilities.Google.GooglePages.GoogleSearchPage;
+import utilities.Google.GooglePages.GoogleSearchResultPage;
 
 public class GoogleSearchBarTest {
 
-    private DriverChrome driverChrome;
-    private GoogleSearchBarActions searchBarActions;
+    private Drivers driverChrome;
+    private GoogleSearchPage googleSearchPage;
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp() {
         String webURL = "https://www.google.com/";
-        driverChrome = new DriverChromeImplemented(webURL);
-        searchBarActions = new GoogleSearchBarActions(driverChrome.getDriver());
+        driverChrome = new DriverChromeImplemented();
+        driverChrome.setWebURL(webURL);
+        googleSearchPage = new GoogleSearchPage(driverChrome.getDriver());
     }
 
     @Test
@@ -28,21 +25,18 @@ public class GoogleSearchBarTest {
         String secondSearch = "automation";
         String verifyText = "store.steampowered.com";
 
-        List<WebElement> webElementListFirstSearch = searchBarActions.selectResults(firstSearch);
-        searchBarActions.setWebElementListFirstResult(webElementListFirstSearch);
-        searchBarActions.printResults(webElementListFirstSearch);
-        searchBarActions.clearSearchField();
+        googleSearchPage.searchAndSelectResults(firstSearch);
+        googleSearchPage.clearSearchField();
 
-        List<WebElement> webElementListSecondSearch = searchBarActions.selectResults(secondSearch);
-        searchBarActions.setWebElementListSecondResult(webElementListSecondSearch);
-        searchBarActions.printResults(webElementListSecondSearch);
-        searchBarActions.verifyNoCoincidencesBetweenLists();
-        searchBarActions.clickFirstImage();
-        searchBarActions.verifyText(verifyText);
+        googleSearchPage.searchAndSelectResults(secondSearch);
+        googleSearchPage.verifyNoCoincidencesBetweenLists();
+
+        GoogleSearchResultPage googleSearchResultPage = googleSearchPage.clickFirstImage();
+        googleSearchResultPage.verifyText(verifyText);
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
-        driverChrome.getDriver().close();
+        driverChrome.getDriver().quit();
     }
 }

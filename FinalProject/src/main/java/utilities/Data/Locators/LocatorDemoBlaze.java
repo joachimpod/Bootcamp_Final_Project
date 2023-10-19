@@ -15,7 +15,7 @@ public enum LocatorDemoBlaze {
     PLACE_ORDER_BUTTON_XPATH(By.xpath("//button[contains(text(),'Place Order')]")),
     PURCHASE_BUTTON_XPATH(By.xpath("//button[contains(text(),'Purchase')]")),
     MESSAGE_SUCCESS_XPATH(By.xpath("//h2[contains(text(),'Thank you for your purchase!')]")),
-    PLACE_ORDER_DATA_XPATH(By.xpath("//body/div[10]/p[1]"));
+    PLACE_ORDER_DATA_XPATH(By.className("text-muted"));
     private final By by;
 
     LocatorDemoBlaze(By by) {

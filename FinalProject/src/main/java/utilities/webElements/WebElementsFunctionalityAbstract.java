@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import utilities.webElements.interfaces.WebElementsFunctionality;
-
 import java.util.List;
 
 public abstract class  WebElementsFunctionalityAbstract implements WebElementsFunctionality {
@@ -41,6 +40,10 @@ public abstract class  WebElementsFunctionalityAbstract implements WebElementsFu
 
 	public void waitAlert() {
 		wait.until(ExpectedConditions.alertIsPresent());
+	}
+
+	public WebDriver getDriver(){
+		return driver;
 	}
 
 }

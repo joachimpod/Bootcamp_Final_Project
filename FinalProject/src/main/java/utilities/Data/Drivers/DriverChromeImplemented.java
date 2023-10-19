@@ -2,17 +2,15 @@ package utilities.Data.Drivers;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class DriverChromeImplemented extends DriverChromeAbstract{
+public class DriverChromeImplemented extends DriversAbstract{
 
 
-    public DriverChromeImplemented(String webURL){
-        initDriver(webURL);
+    public DriverChromeImplemented(){
+        initDriver();
     }
-    private void initDriver(String webURL){
+    private void initDriver(){
         System.setProperty(webDriveChrome, pathChromeDriver);
-
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get(webURL);
+        driver.manage().deleteAllCookies();
     }
 }
