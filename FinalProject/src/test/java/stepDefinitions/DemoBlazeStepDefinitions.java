@@ -27,11 +27,6 @@ public class DemoBlazeStepDefinitions {
 		webElementInteractions.clickProductAndAddToCart(product);
 	}
 
-	@Given("I click in categories {string}")
-	public void iClickInCategories(String categories) {
-		webElementInteractions.clickCategory(categories);
-	}
-
 	@Given("I proceed to the cart")
 	public void iProceedToTheCart() {
 		webElementInteractions.proceedToCart();
@@ -49,6 +44,20 @@ public class DemoBlazeStepDefinitions {
 	public void iShouldSeeTheInTheShopCart(String products) {
 		List<String> productsList = List.of(products.split(","));
 		webElementInteractions.iShouldSeeTheInTheShopCart(productsList);
+	}
+
+
+
+	@Given("I search for {string} and {string} and add it to the cart")
+	public void iSearchForAndAndAddItToTheCart(String products, String categories) {
+		List<String> productsList = List.of(products.split(","));
+		List<String> categoriesList = List.of(categories.split(","));
+		for (int index = 0; index < productsList.size(); index++) {
+			String product = productsList.get(index);
+			String category = (index < categoriesList.size()) ? categoriesList.get(index) : "";
+			webElementInteractions.clickProductAndAddToCart(product);
+			webElementInteractions.clickCategory(category);
+		}
 	}
 
 	@When("I place the order with {string} and {string} and {string}  and {string}  and {string} and {string}")
@@ -71,6 +80,5 @@ public class DemoBlazeStepDefinitions {
 	public void afterScenario() {
 		driverChrome.getDriver().quit();
 	}
-
 
 }
